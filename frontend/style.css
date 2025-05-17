@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.title {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    height: 50vh;
+    place-items: center;
+    border: 1px solid #ccc; <!-- Placeholder -->
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+    background-color: #ff0000; <!-- Placeholder -->
+}
+
+.login-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #ff0000; <!-- Placeholder -->
+    width: 100%;
+    max-width: 350px;
+}
+
+.login {
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.text-field {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.login-btn, .signup-btn {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.login-button, .signup-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #45a049;
+}
+
+.signup-button {
+    background-color: #2196F3;
+}
+
+.signup-button:hover {
+    background-color: #0b7dda;
+}

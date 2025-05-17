@@ -1,14 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title> Obligatory HTML Boilerplate </title>
+        <title>Obligatory HTML Boilerplate</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="" />
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
 
     <body>
-        <h1> Obligatory HTML Boilerplate </h1>
+        <div class="title">
+            <h1>Welcome!</h1>
+        </div>
+
+        <div class="grid-container">
+            <div class="logo"></div>
+
+            <div class="login-container">
+                <div class="login">
+                    <h2>Login</h2>
+                </div>
+
+                <input type="text" class="text-field" placeholder="Username" />
+                <input type="password" class="text-field" placeholder="Password" />
+
+                <div class="login-btn">
+                    <a href="/main.html" class="login-button">Login</a>
+                </div>
+
+                <div class="signup-btn">
+                    <a href="/signup.html" class="signup-button">Sign Up</a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
