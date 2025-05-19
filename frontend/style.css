@@ -13,7 +13,7 @@
 
 .grid-container {
     display: grid;
-    min-height: 70vh;
+    min-height: 650px;
     place-items: center;
     border: 1px solid #ccc; /* Placeholder */
     margin: 0 auto;
@@ -38,7 +38,7 @@
     border: 1px solid #ccc; /* Placeholder */
     width: 100%;
     height: auto;
-    min-height: 580px;
+    min-height: 480px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -64,7 +64,6 @@
     left: 100%;
     width: 100%;
     height: auto;
-    min-height: 100%;
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
