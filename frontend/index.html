@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="" />
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="app.js"></script>
     </head>
 
     <body>
@@ -16,20 +17,39 @@
         <div class="grid-container">
             <div class="logo"></div>
 
-            <div class="login-container">
-                <div class="login">
-                    <h2>Login</h2>
+            <div class="flex-container">
+                <div class="login-container">
+                    <div class="login">
+                        <h2>Login</h2>
+                    </div>
+
+                    <input type="text" class="text-field" placeholder="Username" />
+                    <input type="password" class="text-field" placeholder="Password" />
+
+                    <div class="login-btn-container">
+                        <a href="/main.html" class="login-btn">Login</a>
+                    </div>
+
+                    <div class="signup-btn-container">
+                        <a href="#" id="signup-btn" class="signup-btn">Sign Up</a>
+                    </div>
                 </div>
 
-                <input type="text" class="text-field" placeholder="Username" />
-                <input type="password" class="text-field" placeholder="Password" />
+                <div class="signup-container">
+                    <div class="signup">
+                        <h2>Create Account</h2>
+                        <a href="#" id="back-btn" class="back-btn">← Back</a>
+                    </div>
 
-                <div class="login-btn">
-                    <a href="/main.html" class="login-button">Login</a>
-                </div>
+                    <input type="text" class="text-field" placeholder="First Name" />
+                    <input type="text" class="text-field" placeholder="Last Name" />
+                    <input type="text" class="text-field" placeholder="Username" />
+                    <input type="password" class="text-field" placeholder="Password" />
+                    <input type="password" class="text-field" placeholder="Re-type Password" />
 
-                <div class="signup-btn">
-                    <a href="/signup.html" class="signup-button">Sign Up</a>
+                    <div class="create-account-btn">
+                        <a href="#" class="create-btn">Create Account</a> <!-- I would like for this to give a response to the user if creation was successful or not -->
+                    </div>
                 </div>
             </div>
         </div>
