@@ -10,7 +10,7 @@
 	#Connect to database by creating a new sql object.
 	#mysqli("host", "username", "password","database").
 	$conn = new mysqli("localhost", 
-		"Admin", 
+		"TheBeast", 
 		"WeLoveCOP4331", 
 		"COP4331");
 
