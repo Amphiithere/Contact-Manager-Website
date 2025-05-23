@@ -151,3 +151,141 @@
 .slide-in .login-container {
     transform: translateX(-100%);
 }
+
+/* Contacts Page CSS */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #ff0000;
+    z-index: 10;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+}
+
+.logo-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.logo-image {
+    display: block;
+    margin: 0 auto;
+    background-color: #000;
+}
+
+/* Will be changed when actual image is available */
+#img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    background-color: #000;
+}
+
+.logo-text {
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.logo-text h1 {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.menu-bar{
+    height: 80%;
+    width: 100%;
+    margin-bottom: auto;
+    background: #4CAF50;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-links {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.list-item {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 20px;
+}
+
+.nav-link:hover {
+    background-color: #45a049;
+}
+
+.menu-bottom {
+    width: 100%;
+    margin-top: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.logout {
+    list-style: none;
+    width: 100%;
+    display: flex;
+}
+
+#logout-btn {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    background-color: #ff0000;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+#logout-btn:hover {
+    background-color: #ff5252;
+}
+
+.content-header {
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content-body {
+    padding: 10px 0;
+}
+
+.contact-list {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-height: 300px;
+    padding: 20px;
+}
