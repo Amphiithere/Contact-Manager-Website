@@ -31,7 +31,7 @@ else
     if($stmt->affected_rows > 0)
     {
         $userId = $stmt->insert_id;
-        returnWithInfo("User Registered Successfully");
+        returnWithInfo("User Registered Successfully"); //send messgae to indicate success
     }
     else
     {
