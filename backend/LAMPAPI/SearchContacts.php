@@ -12,9 +12,11 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select Name from Contacts where (firstName like ? or lastName like ?) and UserID=?");	//select from Contacts database instead of colors
+		//select from Contacts database instead of colors
+		//Added feature to search by fristname, lastname, phone or email
+		$stmt = $conn->prepare("select * from Contacts where (FirstName like ? OR LastName like ? OR Phone like ? OR Email like?) and UserID=?");
 		$searchName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("sss", $searchName, $searchName, $inData["userId"]);
+		$stmt->bind_param("sssss", $searchName, $searchName, $searchName, $searchName, $inData["userId"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
@@ -26,7 +28,8 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-			$searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "PhoneNumber" : "' . $row["PhoneNumber"]. '", "EmailAddress" : "' . $row["EmailAddress"]. '", "UserID" : "' . $row["UserID"].'", "ID" : "' . $row["ID"]. '"}';
+			$searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "PhoneNumber" : "' . $row["Phone"]. '", "EmailAddress" : "' . $row["Email"]. '", "UserID" : "' . $row["UserID"].'", "ID" : "' . $row["ID"]. '"}';			
+			//search will return array of json objects
 		}
 		
 		if( $searchCount == 0 )
