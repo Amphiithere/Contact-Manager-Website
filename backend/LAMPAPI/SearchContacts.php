@@ -13,7 +13,7 @@
 	else
 	{
 		//select from Contacts database instead of colors
-		//Added feature to search by fristname, lastname, phone or email 
+		//Added feature to search by fristname, lastname, phone or email
 		$stmt = $conn->prepare("select * from Contacts where (FirstName like ? OR LastName like ? OR Phone like ? OR Email like?) and UserID=?");
 		$searchName = "%" . $inData["search"] . "%";
 		$stmt->bind_param("sssss", $searchName, $searchName, $searchName, $searchName, $inData["userId"]);
