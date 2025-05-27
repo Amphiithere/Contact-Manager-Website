@@ -302,3 +302,20 @@ html, body {
     min-height: 300px;
     padding: 20px;
 }
+
+/* Contacts Table */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(2) {
+    background-color: #dddddd;
+}
