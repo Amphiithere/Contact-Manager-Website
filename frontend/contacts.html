@@ -7,6 +7,7 @@
         <title>Contact Manager</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <script src="app.js"></script>
+	      <script src="code.js"></script>
     </head>
 
     <body class="contacts-body">
@@ -45,10 +46,19 @@
                     <h2>Welcome (Name of User here)</h2>
                 </div>
 
+		<input id="searchText" type="text"/>
+		<button onclick="searchContacts()">Search</button>
+		<div id="colorSearchResult"></div>
+
                 <div class="content-body">
-                    <div class="contact-list">
-                        <!-- Contact list content will go here -->
-                    </div>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                        </tr>
+                    </table>
+		    <p id="contact-list"></p>
                 </div>
             </div>
         </main>

@@ -215,7 +215,7 @@ function addColor()
 }
 
 //TODO: replace colors with contact info and params
-function searchColor()
+function searchContacts()
 {
 	let srch = document.getElementById("searchText").value;
 	document.getElementById("colorSearchResult").innerHTML = "";
@@ -225,7 +225,7 @@ function searchColor()
 	let tmp = {search:srch,userId:userId};
 	let jsonPayload = JSON.stringify( tmp );
 
-	let url = urlBase + '/SearchColors.' + extension;
+	let url = urlBase + '/SearchContacts.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -241,7 +241,7 @@ function searchColor()
 
 				for( let i=0; i<jsonObject.results.length; i++ )
 				{
-					colorList += jsonObject.results[i];
+          			colorList += jsonObject.results[i].FirstName + " " + jsonObject.results[i].LastName + "\t" + jsonObject.results[i].PhoneNumber + "\t" + jsonObject.results[i].EmailAddress;
 					if( i < jsonObject.results.length - 1 )
 					{
 						colorList += "<br />\r\n";
