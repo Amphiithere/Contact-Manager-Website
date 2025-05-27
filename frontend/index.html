@@ -62,14 +62,15 @@
                         <a href="#" id="back-btn" class="back-btn">← Back</a>
                     </div>
 
-                    <input type="text" class="text-field" placeholder="First Name" />
-                    <input type="text" class="text-field" placeholder="Last Name" />
-                    <input type="text" class="text-field" placeholder="Username" />
-                    <input type="password" class="text-field" placeholder="Password" />
-                    <input type="password" class="text-field" placeholder="Re-type Password" />
+                    <input type="text" id="firstNameReg" class="text-field" placeholder="First Name" />
+                    <input type="text" id="lastNameReg" class="text-field" placeholder="Last Name" />
+                    <input type="text" id="loginNameReg" class="text-field" placeholder="Username" />
+                    <input type="password" id="loginPasswordReg" class="text-field" placeholder="Password" />
+                    <input type="password" id="confirmPasswordReg" class="text-field" placeholder="Re-type Password" />
 
+                    <div id="registerResult"></div>
                     <div class="create-account-btn">
-                        <a href="#" class="create-btn">Create Account</a> <!-- I would like for this to give a response to the user if creation was successful or not -->
+                        <button onclick="doRegister()" class="create-btn">Create Account</button>
                     </div>
                 </div>
             </div>

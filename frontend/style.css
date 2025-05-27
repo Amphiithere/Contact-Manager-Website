@@ -127,6 +127,14 @@ html, body {
     background-color: #0b7dda;
 }
 
+#loginResult, #registerResult {
+    padding: 10px 0;
+    text-align: center;
+    color: #ff0000;
+    font-size: 14px;
+    min-height: 20px;
+}
+
 .create-account-btn {
     width: 100%;
     margin: 5px 0;
