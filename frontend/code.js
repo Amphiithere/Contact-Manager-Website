@@ -58,6 +58,80 @@ function doLogin()
 
 }
 
+function doRegister()
+{
+	// Get all the form fields
+	let firstName = document.getElementById("firstNameReg").value;
+	let lastName = document.getElementById("lastNameReg").value;
+	let login = document.getElementById("loginNameReg").value;
+	let password = document.getElementById("loginPasswordReg").value;
+	let confirmPassword = document.getElementById("confirmPasswordReg").value;
+
+	// Reset the result message
+	document.getElementById("registerResult").innerHTML = "";
+
+	// Verify all fields used
+	if (firstName === "" || lastName === "" || login === "" || password === "") {
+		document.getElementById("registerResult").innerHTML = "Please fill in all fields";
+		return;
+	}
+
+	// Check if passwords match
+	if (password !== confirmPassword) {
+		document.getElementById("registerResult").innerHTML = "Passwords do not match";
+		return;
+	}
+
+	// Create the data object to send
+	let tmp = {
+		firstName: firstName,
+		lastName: lastName,
+		login: login,
+		password: password
+	};
+
+	let jsonPayload = JSON.stringify(tmp);
+	let url = urlBase + '/Register.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+
+				if (jsonObject.error) {
+					document.getElementById("registerResult").innerHTML = jsonObject.error;
+					return;
+				}
+
+				// Registration successful
+				document.getElementById("registerResult").innerHTML =
+					"<span style='color: green;'>Registration successful! You can now log in.</span>";
+
+				// Clear the form fields
+				document.getElementById("firstName").value = "";
+				document.getElementById("lastName").value = "";
+				document.getElementById("loginName").value = "";
+				document.getElementById("loginPassword").value = "";
+				document.getElementById("confirmPassword").value = "";
+
+				// Return to login page after a short delay
+				setTimeout(function() {
+					// Go back to login form
+					document.querySelector('.flex-container').classList.remove('slide-in');
+				}, 2000);
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err) {
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
+}
+
 function saveCookie()
 {
 	let minutes = 20;
