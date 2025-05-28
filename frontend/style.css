@@ -6,13 +6,19 @@
     padding: 0;
 }
 
-html, body {
+html {
     overflow-x: hidden;
     height: 100%;
 }
 
-.title {
+body {
     font-family: "ABeeZee", sans-serif;
+    overflow-x: hidden;
+    background-image: url('/images/Site-Background.png');
+    background-position: 50%;
+}
+
+.title {
     margin: auto;
     width: 50%;
     text-align: center;
@@ -22,7 +28,8 @@ html, body {
     display: grid;
     min-height: 650px;
     place-items: center;
-    border: 1px solid #ccc; /* Placeholder */
+    border: 2px solid black; /* Placeholder */
+    background: #d0d8d2;
     margin: auto;
     position: absolute;
     top: 3%;
@@ -42,7 +49,7 @@ html, body {
     display: flex;
     position: relative;
     overflow: hidden;
-    border: 1px solid #ccc; /* Placeholder */
+    border-top: 2px solid black; /* Placeholder */
     width: 100%;
     height: auto;
     min-height: 480px;
@@ -181,7 +188,7 @@ html, body {
     top: 0;
     height: 100vh;
     width: 250px;
-    background-color: #ff0000;
+    background-color: #ccc;
     overflow-y: auto;
     z-index: 100;
 }
@@ -201,7 +208,8 @@ html, body {
     align-items: center;
     padding: 20px 0;
     width: 100%;
-    background-color: #ff0000;
+    background-color: #6ec0b7;
+    border: 2px solid #000;
 }
 
 .logo-image {
@@ -226,7 +234,7 @@ html, body {
 
 .logo-text h1 {
     font-size: 1.5rem;
-    color: white;
+    color: black;
 }
 
 .menu-links {
@@ -234,7 +242,8 @@ html, body {
     list-style: none;
     padding: 0;
     margin: 0;
-    background: #4CAF50;
+    background: #d0d8d2;
+    border: 2px solid black;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -251,7 +260,7 @@ html, body {
 }
 
 .list-item {
-    color: white;
+    color: black;
     text-decoration: none;
     text-align: center;
     display: block;
@@ -260,13 +269,14 @@ html, body {
 }
 
 .nav-link:hover {
-    background-color: #45a049;
+    background-color: #ABB2AD;
+    text-decoration: underline 2px;
 }
 
 .logout-container {
     width: 100%;
     margin-top: auto;
-    background-color: #ff0000;
+    background-color: #BC423C;
     position: sticky;
     bottom: 0;
 }
@@ -275,15 +285,17 @@ html, body {
     display: block;
     width: 100%;
     padding: 20px;
-    color: white;
+    border: 2px solid black;
+    color: black;
     text-decoration: none;
-    background-color: #ff0000;
+    background-color: #eb3a30;
     text-align: center;
     transition: background-color 0.3s;
 }
 
 #logout-btn:hover {
-    background-color: #ff5252;
+    background-color: #ff5c5c;
+    text-decoration: underline 2px black;
 }
 
 .content-header {
@@ -310,12 +322,26 @@ table {
     width: 100%;
 }
 
-td, th {
-    border: 1px solid #dddddd;
+th {
+    border: 2px solid black;
+    color: black;
     text-align: left;
     padding: 8px;
+    background-color: #6ec0b7;
 }
 
-tr:nth-child(2) {
-    background-color: #dddddd;
+td {
+    border: 2px solid black;
+    color: black;
+    text-align: left;
+    padding: 8px;
+    background-color: #d0d8d2;
+}
+
+/* small notification for when search results return empty.
+add JS script to show and hide accordingly before implementing */
+.no-contacts-text {
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
