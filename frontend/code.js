@@ -218,7 +218,8 @@ function addColor()
 function searchContacts()
 {
 	let srch = document.getElementById("searchText").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
+	document.getElementById("contact-list").innerHTML = "";
+  document.getElementById("contact-notification").innerHTML = "";
 
 	let colorList = "";
 
@@ -236,26 +237,34 @@ function searchContacts()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
+				document.getElementById("colorSearchResult").innerHTML = "Contact(s) has been retrieved";
 				let jsonObject = JSON.parse( xhr.responseText );
+        
+        if(jsonObject.results === undefined)
+        {
+          document.getElementById("contact-notification").innerHTML = "There's Nobody Here!";
+        }
+        
+        //table header setup
+        colorList = "<th> Name </th> <th> Phone Number </th> <th> Email </th>";
 
 				for( let i=0; i<jsonObject.results.length; i++ )
 				{
-          			colorList += jsonObject.results[i].FirstName + " " + jsonObject.results[i].LastName + "\t" + jsonObject.results[i].PhoneNumber + "\t" + jsonObject.results[i].EmailAddress;
+          			colorList += "<tr> <td>" + jsonObject.results[i].FirstName + " " + jsonObject.results[i].LastName + "</td> <td>" + jsonObject.results[i].PhoneNumber + "</td> <td>" + jsonObject.results[i].EmailAddress + "</td> </tr>";
 					if( i < jsonObject.results.length - 1 )
 					{
 						colorList += "<br />\r\n";
 					}
 				}
 
-				document.getElementsByTagName("p")[0].innerHTML = colorList;
+				document.getElementById("contact-list").innerHTML = colorList;
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("colorSearchResult").innerHTML = err.message;
+		document.getElementById("contact-list").innerHTML = err.message;
 	}
 
 }
