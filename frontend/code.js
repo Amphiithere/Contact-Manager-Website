@@ -1,4 +1,4 @@
-const urlBase = 'supercoolfun.site/LAMPAPI';
+const urlBase = '/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -221,7 +221,7 @@ function searchContacts()
 	document.getElementById("contact-list").innerHTML = "";
   document.getElementById("contact-notification").innerHTML = "";
 
-	let colorList = "";
+	let contactList = "";
 
 	let tmp = {search:srch,userId:userId};
 	let jsonPayload = JSON.stringify( tmp );
@@ -237,7 +237,7 @@ function searchContacts()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("colorSearchResult").innerHTML = "Contact(s) has been retrieved";
+				//document.getElementById("colorSearchResult").innerHTML = "Contact(s) has been retrieved";
 				let jsonObject = JSON.parse( xhr.responseText );
         
         if(jsonObject.results === undefined)
@@ -246,18 +246,18 @@ function searchContacts()
         }
         
         //table header setup
-        colorList = "<th> Name </th> <th> Phone Number </th> <th> Email </th>";
+        contactList = "<th> Name </th> <th> Phone Number </th> <th> Email </th>";
 
 				for( let i=0; i<jsonObject.results.length; i++ )
 				{
-          			colorList += "<tr> <td>" + jsonObject.results[i].FirstName + " " + jsonObject.results[i].LastName + "</td> <td>" + jsonObject.results[i].PhoneNumber + "</td> <td>" + jsonObject.results[i].EmailAddress + "</td> </tr>";
+          			contactList += "<tr> <td>" + jsonObject.results[i].FirstName + " " + jsonObject.results[i].LastName + "</td> <td>" + jsonObject.results[i].PhoneNumber + "</td> <td>" + jsonObject.results[i].EmailAddress + "</td> </tr>";
 					if( i < jsonObject.results.length - 1 )
 					{
-						colorList += "<br />\r\n";
+						contactList += "<br />\r\n";
 					}
 				}
 
-				document.getElementById("contact-list").innerHTML = colorList;
+				document.getElementById("contact-list").innerHTML = contactList;
 			}
 		};
 		xhr.send(jsonPayload);
