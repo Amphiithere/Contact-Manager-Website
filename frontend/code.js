@@ -1,4 +1,4 @@
-const urlBase = 'http://143.198.229.43/LAMPAPI';
+const urlBase = 'supercoolfun.site/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -46,7 +46,7 @@ function doLogin()
 
 				saveCookie();
 
-				window.location.href = "contacts.html";
+				window.location.href = "/contacts.html";
 			}
 		};
 		xhr.send(jsonPayload);

@@ -3,15 +3,11 @@
     <head>
         <meta charset="UTF-8" />
 
-        <!--Webpage preview title-->
-        <title>Welcome</title>
+        <title>Inlet Contacts</title>
 
-        <!--Device view-->
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="" />
-        <!--TODO: add mobile view support-->
 
-        <!--Importing CSS and JS files-->
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="app.js"></script>
         <script src="md5.js"></script>
@@ -25,7 +21,7 @@
                 <h1>Welcome!</h1>
             </div>
 
-            <div class="logo"></div>
+            <img class="logo" src="/images/site-logo.png" alt="Inlet Contacts logo"></img>
 
             <div class="flex-container">
                 <div class="login-container">
@@ -39,7 +35,6 @@
                     <p>Password: </p>
                     <input id="loginPassword" type="password" class="text-field" placeholder="Password" />
 
-                    <!--Debug for login. NOTE: this can only be tested on the server! It requires existing API and Database infrastructure-->
                     <div id="loginResult"></div>
 
                     <div class="login-btn-container">
@@ -49,11 +44,6 @@
                     <div class="signup-btn-container">
                         <button href="#" id="signup-btn" class="signup-btn">Sign Up</button>
                     </div>
-
-                    <!--Temporary link to contacts page for development -->
-                    <div id="temp-link">
-                        <a href="contacts.html">Contacts</a>
-                    </div>
                 </div>
 
                 <div class="signup-container">
@@ -62,11 +52,16 @@
                         <a href="#" id="back-btn" class="back-btn">← Back</a>
                     </div>
 
+                    <p> First Name:</p>
                     <input type="text" id="firstNameReg" class="text-field" placeholder="First Name" />
+                    <p> Last Name:</P>
                     <input type="text" id="lastNameReg" class="text-field" placeholder="Last Name" />
+                    <p> Username:</p>
                     <input type="text" id="loginNameReg" class="text-field" placeholder="Username" />
+                    <p> Password:</p>
                     <input type="password" id="loginPasswordReg" class="text-field" placeholder="Password" />
-                    <input type="password" id="confirmPasswordReg" class="text-field" placeholder="Re-type Password" />
+                    <p> Confirm Password:</p>
+                    <input type="password" id="confirmPasswordReg" class="text-field" placeholder="Confirm Password" />
 
                     <div id="registerResult"></div>
                     <div class="create-account-btn">
