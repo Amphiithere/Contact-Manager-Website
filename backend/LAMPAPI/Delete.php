@@ -52,6 +52,8 @@
 
 	function sendResultInfoAsJson( $obj )
 	{
+		header('Access-Control-Allow-Origin: http://supercoolfun.site');
+  		header('Access-Control-Allow-Headers: Content-Type');
 		header('Content-type: application/json');
 		echo $obj;
 	}

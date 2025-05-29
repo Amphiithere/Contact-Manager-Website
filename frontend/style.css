@@ -28,7 +28,7 @@ body {
     display: grid;
     min-height: 650px;
     place-items: center;
-    border: 2px solid black; /* Placeholder */
+    border: 2px solid black;
     background: #d0d8d2;
     margin: auto;
     position: absolute;
@@ -42,14 +42,13 @@ body {
 .logo {
     height: 100px;
     width: 100px;
-    background-color: #ff0000; /* Placeholder */
 }
 
 .flex-container {
     display: flex;
     position: relative;
     overflow: hidden;
-    border-top: 2px solid black; /* Placeholder */
+    border-top: 2px solid black;
     width: 100%;
     height: auto;
     min-height: 480px;
@@ -77,9 +76,10 @@ body {
     position: absolute;
     left: 100%;
     width: 100%;
-    height: auto;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
+    overflow-y: scroll;
     gap: 10px;
     padding: 20px;
     transition: transform 0.3s ease-in-out;
@@ -105,7 +105,7 @@ body {
     width: 100%;
     padding: 12px;
     background-color: #4CAF50;
-    color: white;
+    color: black;
     text-align: center;
     text-decoration: none;
     border-radius: 4px;
@@ -215,15 +215,13 @@ body {
 .logo-image {
     display: block;
     margin: 0 auto;
-    background-color: #000;
 }
 
 /* Will be changed when actual image is available */
 #img {
     width: 110px;
     height: 110px;
-    object-fit: cover;
-    background-color: #000;
+    object-fit: fill;
 }
 
 .logo-text {
@@ -336,12 +334,4 @@ td {
     text-align: left;
     padding: 8px;
     background-color: #d0d8d2;
-}
-
-/* small notification for when search results return empty.
-add JS script to show and hide accordingly before implementing */
-.no-contacts-text {
-    display: none;
-    justify-content: center;
-    align-items: center;
 }
