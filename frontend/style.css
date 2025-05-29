@@ -114,8 +114,18 @@ body {
     transition: background-color 0.3s;
 }
 
+.text-field-search {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 50%;
+    max-height: 50px;
+    font-size: 16px;
+}
+
 .login-btn:hover {
     background-color: #45a049;
+    text-decoration: underline 1.5px solid black;
 }
 
 .signup-btn {
@@ -124,6 +134,7 @@ body {
 
 .signup-btn:hover {
     background-color: #0b7dda;
+    text-decoration: underline 1.5px solid black;
 }
 
 .create-btn {
@@ -132,6 +143,7 @@ body {
 
 .create-btn:hover {
     background-color: #0b7dda;
+    text-decoration: underline 1.5px solid black;
 }
 
 #loginResult, #registerResult {
@@ -194,7 +206,7 @@ body {
 }
 
 .main-content {
-    min-height: 150vh;
+    min-height: 100vh;
     padding: 20px;
     width: 100%;
     color: white;
@@ -217,7 +229,36 @@ body {
     margin: 0 auto;
 }
 
-/* Will be changed when actual image is available */
+.search-button-container {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.search-button {
+    width: 20%;
+    margin: 0 0 0 3%;
+    padding: 8px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    background-color: #d0d8d2;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  text-decoration: underline 1.5px solid black;
+}
+
 #img {
     width: 110px;
     height: 110px;
@@ -268,7 +309,7 @@ body {
 
 .nav-link:hover {
     background-color: #ABB2AD;
-    text-decoration: underline 2px;
+    text-decoration: underline 1.5px;
 }
 
 .logout-container {
@@ -293,7 +334,7 @@ body {
 
 #logout-btn:hover {
     background-color: #ff5c5c;
-    text-decoration: underline 2px black;
+    text-decoration: underline 1.5px black;
 }
 
 .content-header {
@@ -311,6 +352,11 @@ body {
     border-radius: 4px;
     min-height: 300px;
     padding: 20px;
+}
+
+.main-page-header {
+  -webkit-text-stroke: 0.3px black;
+  font-size: 32px;
 }
 
 /* Contacts Table */
