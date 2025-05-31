@@ -239,18 +239,26 @@ function searchContacts()
 			{
 				//document.getElementById("colorSearchResult").innerHTML = "Contact(s) has been retrieved";
 				let jsonObject = JSON.parse( xhr.responseText );
-        
+
         if(jsonObject.results === undefined)
         {
           document.getElementById("contact-notification").innerHTML = "There's Nobody Here!";
         }
-        
+
         //table header setup
-        contactList = "<th> Name </th> <th> Phone Number </th> <th> Email </th>";
+        contactList = "<th> Name </th> <th> Phone Number </th> <th> Email </th> <th> Actions </th>";
 
 				for( let i=0; i<jsonObject.results.length; i++ )
 				{
-          			contactList += "<tr> <td>" + jsonObject.results[i].FirstName + " " + jsonObject.results[i].LastName + "</td> <td>" + jsonObject.results[i].PhoneNumber + "</td> <td>" + jsonObject.results[i].EmailAddress + "</td> </tr>";
+          			contactList += "<tr> <td>" + jsonObject.results[i].FirstName + " " + jsonObject.results[i].LastName +
+                     "</td> <td>" + jsonObject.results[i].PhoneNumber +
+                     "</td> <td>" + jsonObject.results[i].EmailAddress +
+                     "</td> <td>" +
+                     "<button class='action-btn edit-btn' onclick='editContact(" + jsonObject.results[i].ID + ", \"" +
+                     jsonObject.results[i].FirstName + "\", \"" + jsonObject.results[i].LastName + "\", \"" +
+                     jsonObject.results[i].PhoneNumber + "\", \"" + jsonObject.results[i].EmailAddress + "\")'>Edit</button> " +
+                     "<button class='action-btn delete-btn' onclick='deleteContact(" + jsonObject.results[i].ID + ")'>Delete</button>" +
+                     "</td> </tr>";
 					if( i < jsonObject.results.length - 1 )
 					{
 						contactList += "<br />\r\n";
@@ -267,4 +275,135 @@ function searchContacts()
 		document.getElementById("contact-list").innerHTML = err.message;
 	}
 
+}
+
+function deleteContact(id) {
+    if (!confirm("Are you sure you want to delete this contact?")) {
+        return;
+    }
+
+    const data = {
+        contactID: id,
+        userID: userId
+    };
+
+    let jsonPayload = JSON.stringify(data);
+    let url = urlBase + '/Delete.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    try {
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+
+                if (response.error && response.error !== "") {
+                    alert("Error deleting contact: " + response.error);
+                } else {
+                    searchContacts();
+                }
+            }
+        };
+        xhr.send(jsonPayload);
+    } catch (err) {
+        alert("Error: " + err.message);
+    }
+}
+
+function editContact(id, firstName, lastName, phoneNumber, emailAddress) {
+    // Create modal if it doesn't exist
+    let modal = document.getElementById('edit-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'edit-modal';
+        modal.className = 'modal';
+        document.body.appendChild(modal);
+    }
+
+    // Set modal content
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Edit Contact</h2>
+            <div class="form-group">
+                <label for="edit-first-name">First Name:</label>
+                <input type="text" id="edit-first-name" class="text-field" value="${firstName}" />
+            </div>
+            <div class="form-group">
+                <label for="edit-last-name">Last Name:</label>
+                <input type="text" id="edit-last-name" class="text-field" value="${lastName}" />
+            </div>
+            <div class="form-group">
+                <label for="edit-phone">Phone Number:</label>
+                <input type="text" id="edit-phone" class="text-field" value="${phoneNumber}" />
+            </div>
+            <div class="form-group">
+                <label for="edit-email">Email:</label>
+                <input type="text" id="edit-email" class="text-field" value="${emailAddress}" />
+            </div>
+            <div id="editResult"></div>
+            <button class="action-btn edit-btn" onclick="saveContact(${id})">Save Changes</button>
+        </div>
+    `;
+
+    // Display modal
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    const modal = document.getElementById('edit-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function saveContact(id) {
+    const firstName = document.getElementById('edit-first-name').value;
+    const lastName = document.getElementById('edit-last-name').value;
+    const phoneNumber = document.getElementById('edit-phone').value;
+    const emailAddress = document.getElementById('edit-email').value;
+
+    if (firstName.trim() === '' || lastName.trim() === '' || phoneNumber.trim() === '' || emailAddress.trim() === '') {
+        document.getElementById('editResult').innerHTML = "All fields are required";
+        return;
+    }
+
+    const data = {
+        firstName: firstName,
+        lastName: lastName,
+        phoneNumber: phoneNumber,
+        emailAddress: emailAddress,
+
+        // Unsure about these two but it is in the edit.php
+        contactId: id,
+        userId: userId
+    };
+
+    let jsonPayload = JSON.stringify(data);
+    let url = urlBase + '/Edit.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    try {
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+
+                if (response.error && response.error !== "") {
+                    document.getElementById('editResult').innerHTML = response.error;
+                } else {
+                    // Close modal and refresh contacts
+                    closeModal();
+                    searchContacts();
+                }
+            }
+        };
+        xhr.send(jsonPayload);
+    } catch (err) {
+        document.getElementById('editResult').innerHTML = err.message;
+    }
 }
