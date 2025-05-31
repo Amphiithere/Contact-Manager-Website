@@ -39,8 +39,13 @@
                 </div>
 
     <div class="search-button-container">
-  		<input id="searchText" class="text-field-search" type="text" placeholder="Search"/>
-  		<button class="search-button" onclick="searchContacts()">Search</button>
+        <div class="search-group">
+  		    <input id="searchText" class="text-field-search" type="text" placeholder="Search"/>
+  		    <button class="search-button" onclick="searchContacts()">Search</button>
+        </div>
+        <div class="add-button-group">
+  		    <button class="add-button" onclick="addContact()">Add Contact</button>
+        </div>
   		<div id="colorSearchResult"></div>
     </div>
 
