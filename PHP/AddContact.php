@@ -5,7 +5,7 @@
 	$firstName = $inData["firstName"];
 	$lastName = $inDate["lastName"];
 	$phoneNumber = $inData["phoneNumber"];
-	$emailAdress = $inData["emailAddress"];
+	$emailAddress = $inData["emailAddress"];
 	$userId = $inData["userId"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
@@ -15,8 +15,8 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (FirstName,LastName,PhoneNumber,EmailAddress,UserId) VALUES(?,?,?,?,?)");	//change color values to contact values
-		$stmt->bind_param("ssssi",$firstName,$lastName,$phoneNumber,$emailAddress,$userId);
+		$stmt = $conn->prepare("INSERT INTO Contacts (FirstName,LastName,Phone,Email,UserID) VALUES(?,?,?,?,?)");	//change color values to contact values
+		$stmt->bind_param("sssss",$firstName,$lastName,$phoneNumber,$emailAddress,$userId);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
