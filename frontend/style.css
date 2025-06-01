@@ -14,7 +14,7 @@ html {
 body {
     font-family: "ABeeZee", sans-serif;
     overflow-x: hidden;
-    background-image: url('/images/Site-Background.png');
+    background-image: url('../images/Site-Background.png');
     background-position: 50%;
 }
 
@@ -456,4 +456,200 @@ td {
 
 .delete-btn:hover {
     background-color: #d32f2f;
+}
+
+.profiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
+}
+
+.profile {
+    background-color: rgba(244, 244, 244, 0.4);
+    border: 2px solid black;
+    width: 1000px;
+    margin: 20px auto;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-color: rgb(0, 0, 0);
+    border-radius: 100px;
+    /* Responsive design */
+    width: 100%;              /* Allow to scale inside grid */
+}
+
+.profile-inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-inner img {
+    image-resolution: from-image;
+    width: 250px;
+    height: 350px;
+    border-radius: 20%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    border: 2px solid black;
+}
+
+.profile-inner img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.profile-text p {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.profile-text h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    text-align: center;
+    color: black;
+}
+
+.profile-text ul {
+    text-align: center;
+    list-style: none;
+}
+
+.profile-text ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+/*This is referencing the final .profile div within the .profiles master div*/
+.profiles > .profile:last-child {
+    justify-self: center;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 1000px) {
+    .profiles > .profile:last-child {
+        grid-column: span 1;
+        justify-self: stretch; /* Allow it to take full width */
+    }
+}
+
+.tech-icons img {
+    width: 100px;
+    height: 100px;
+    margin: 0 5px;
+}
+
+.tech-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-icons img {
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.tech-icons img:hover {
+    transform: scale(1.0);
+    transition: transform 0.3s ease;
+}
+
+.technologies {
+    align-self: center;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 70%;
+}
+
+.technologies h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+
+footer.technologies {
+    text-align: center;
+    padding: 2rem;
+}
+
+header {
+    position: relative;
+    height: 80px;
+    display: flex;
+    justify-content: center; /* Centers evertthing horizontally */
+    align-items: center;     /* Vertically aligns everyhitng */
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0 20px;
+}
+
+header img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+    padding: 20px 30px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+}
+
+nav a:hover {
+    color: #2196F3;
+    text-decoration: underline 1.5px solid #2196F3;
+}
+
+.Intro {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 70%;
+}
+
+.Intro h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.Intro p {
+    font-size: 22px;
+    line-height: 1.2;
+    margin-bottom: 20px;
 }

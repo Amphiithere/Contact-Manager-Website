@@ -46,7 +46,7 @@ function doLogin()
 
 				saveCookie();
 
-				window.location.href = "/contacts.html";
+				window.location.href = "../frontend/contacts.html";
 			}
 		};
 		xhr.send(jsonPayload);
