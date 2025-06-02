@@ -15,8 +15,8 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (FirstName,LastName,PhoneNumber,EmailAddress,UserId) VALUES(?,?,?,?,?)");	//change color values to contact values
-		$stmt->bind_param("ssssi",$firstName,$lastName,$phoneNumber,$emailAddress,$userId);
+		$stmt = $conn->prepare("INSERT into Contacts (FirstName,LastName,Phone,Email,UserId) VALUES(?,?,?,?,?)");	//change color values to contact values
+		$stmt->bind_param("sssss",$inData["firstName"],$inData["lastName"],$inData["phoneNumber"],$inData["emailAddress"],$userId);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
@@ -41,5 +41,11 @@
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
+ 
+  function returnWithInfo( $message )
+  {
+    $retValue = '{"success":true,"message":"' . $message . '"}';
+    sendResultInfoAsJson( $retValue );
+  }
 	
 ?>

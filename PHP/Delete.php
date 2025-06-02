@@ -28,7 +28,7 @@
 		
 		#Binds the following paramters to the unknown placeholders defined above.
 		#bind_param('ii' stands for 'int, int').
-		$stmt->bind_param("ii", $contactID, $userID)
+		$stmt->bind_param("ii", $contactID, $userID);
 		
 		#executes the prepared sql statement created above.
 		$stmt->execute();
@@ -53,7 +53,7 @@
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Access-Control-Allow-Origin: http://supercoolfun.site');
-  		header('Access-Control-Allow-Headers: Content-Type');
+		header('Access-Control-Allow-Headers: Content-Type');
 		header('Content-type: application/json');
 		echo $obj;
 	}
@@ -63,5 +63,11 @@
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson($retValue);
 	}
+ 
+ function returnWithInfo( $message )
+{
+    $retValue = '{"success":true,"message":"' . $message . '"}';
+    sendResultInfoAsJson( $retValue );
+}
 
 ?>
