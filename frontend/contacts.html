@@ -1,58 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta name="description" content="COP4331 Contact Manager Full-Stack Project" />
-        <title>Contact Manager</title>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <script src="app.js"></script>
-	      <script src="code.js"></script>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="COP4331 Contact Manager Full-Stack Project"
+    />
+    <title>Contact Manager</title>
 
-    <body class="contacts-body">
-        <nav class="sidebar">
-            <div class="logo-head">
-                <div class="logo-image">
-                    <img id="img" src="/images/site-logo.png" alt="Contact Manager Logo">
-                </div>
-                <div class="logo-text">
-                    <h1>Inlet Contacts Homepage</h1>
-                </div>
-            </div>
+    <!-- import css files-->
+    <link rel="stylesheet" type="text/css" href="../Styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/background.css" />
 
-            <ul class="menu-links">
-                <li class="nav-link">
-                    <a href="./about.html" class="list-item">About The Project!</a>
-                </li>
-                <li class="nav-link">
-                    <a href="https://github.com/Amphiithere/Contact-Manager-Website" class="list-item">Project Github</a>
-                </li>
-            </ul>
+    <!-- import js files-->
+    <script src="../javascript/app.js"></script>
+    <script src="../javascript/code.js"></script>
+  </head>
 
-            <div class="logout-container">
-                <a href="index.html" id="logout-btn">Logout</a>
-            </div>
-        </nav>
+  <body class="contacts-body">
+    <div class="site-bg">
+      <div class="sky"></div>
+      <div class="sea"></div>
+      <div class="sun"></div>
 
-        <main>
-            <div class="main-content">
-                <div class="content-header">
-                    <h2 class="main-page-header">Welcome Back!</h2>
-                </div>
+      <div class="sea-stripes-container">
+        <div class="sea-stripes"></div>
+      </div>
 
-    <div class="search-button-container">
-  		<input id="searchText" class="text-field-search" type="text" placeholder="Search"/>
-  		<button class="search-button" onclick="searchContacts()">Search</button>
-  		<div id="colorSearchResult"></div>
+      <div class="clouds">
+        <div class="clouds-left"></div>
+        <div class="clouds-right"></div>
+        <div class="clouds-middle"></div>
+      </div>
     </div>
 
-                <div class="content-body">
-                    <table id="contact-list">
-                    </table>
-                </div>
-                <div id="contact-notification"></div>
-            </div>
-        </main>
-    </body>
+    <nav class="sidebar">
+      <div class="logo-head">
+        <div class="logo-image">
+          <img
+            id="img"
+            src="../images/site-logo.png"
+            alt="Contact Manager Logo"
+          />
+        </div>
+        <div class="logo-text">
+          <h1>Inlet Contacts Homepage</h1>
+        </div>
+      </div>
+
+      <ul class="menu-links">
+        <li class="nav-link">
+          <a href="./about.html" class="list-item">About The Project!</a>
+        </li>
+        <li class="nav-link">
+          <a
+            href="https://github.com/Amphiithere/Contact-Manager-Website"
+            class="list-item"
+            >Project Github</a
+          >
+        </li>
+      </ul>
+
+      <div class="logout-container">
+        <a href="index.html" id="logout-btn">Logout</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="main-content">
+        <div class="content-header">
+          <h2 class="main-page-header">Welcome Back!</h2>
+        </div>
+
+        <div class="button-container">
+          <!-- Search Contact Section -->
+          <div class="search-button">
+            <input
+              id="searchText"
+              class="text-field-search"
+              type="text"
+              placeholder="Search"
+            />
+            <button class="button" onclick="searchContacts()">Search</button>
+          </div>
+
+          <!-- Add Contact Section -->
+          <div class="add-button">
+            <button class="button" onclick="addContact()">Add Contact</button>
+          </div>
+          <div id="colorSearchResult"></div>
+        </div>
+
+        <div class="content-body">
+          <table id="contact-list"></table>
+        </div>
+        <div id="contact-notification"></div>
+      </div>
+    </main>
+  </body>
 </html>

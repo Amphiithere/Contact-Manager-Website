@@ -1,0 +1,205 @@
+:root {
+  --sea: #128f91;
+  --sun-core: #ff8500;
+  --sun-ring: #ffaa00;
+  --accent: #c9efff;
+
+  /* animated variables (will be driven by keyframes) */
+  --sun-size: 55vmin;
+  --stripe-gap: 70px;
+
+  /* pallet for sunset */
+  --rich-black: #03071e;
+  --chocolate-cosmos: #370617;
+  --rosewood: #6a040f;
+  --penn-red: #9d0208;
+  --engineering-orange: #d00000;
+  --sinopia: #dc2f02;
+  --persimmon: #e85d04;
+  --princeton-orange: #f48c06;
+  --orange-web: #faa307;
+  --selective-yellow: #ffba08;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+@keyframes cloudsFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(5px) scale(1.3);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    top: -70px;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* container stays fixed behind all content */
+.site-bg {
+  position: fixed;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure it stays behind other content */
+}
+
+/* full-covering background for sky + sea */
+.sea {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50vh;
+  background: linear-gradient(var(--sea) 0, #c2b280 95%);
+}
+
+.sky {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    var(--rich-black) 0%,
+    var(--chocolate-cosmos) 8%,
+    var(--rosewood) 14%,
+    var(--penn-red) 20%,
+    var(--engineering-orange) 30%,
+    var(--sinopia) 45%,
+    var(--persimmon) 60%,
+    var(--princeton-orange) 76%,
+    var(--orange-web) 88%,
+    var(--selective-yellow) 100%
+  );
+}
+
+/* sun layer */
+.sun {
+  position: absolute;
+  top: calc(
+    -0.17 * var(--sun-size)
+  ); /* adjust as needed for your composition */
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--sun-size);
+  height: calc(var(--sun-size) * 1.83); /* preserves your 60:110 ratio */
+  background: radial-gradient(
+    circle,
+    #ff4800 0%,
+    #ff6000 10%,
+    var(--sun-core) 25% 35%,
+    var(--sun-ring) 40%,
+    transparent 45%
+  );
+  animation: pulse 6s ease-in-out infinite;
+}
+
+/* sea stripes */
+.sea-stripes-container {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+/* sea stripes */
+.sea-stripes {
+  position: relative;
+  top: 0px;
+  width: 100%;
+  height: calc(100% + var(--stripe-gap));
+  background-size: 100% var(--stripe-gap);
+  overflow: hidden; /* Prevent scrollbars */
+
+  /* Use animated custom props in the gradient */
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--accent) 0 10px,
+    transparent 20px 25px,
+    rgb(0, 92, 138) var(--stripe-gap)
+  );
+
+  /* Only animate variables and Y-position — NOT the background itself */
+  animation: slideDown 6s linear infinite;
+}
+
+/* clouds left */
+.clouds-middle,
+.clouds-left,
+.clouds-right {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 20%;
+  background-repeat: repeat-x;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.clouds-left {
+  background-image: radial-gradient(
+      circle at 5vw 0%,
+      var(--accent) 0% 5%,
+      transparent 10% 25%
+    ),
+    radial-gradient(circle at 10vw 5%, var(--accent) 0% 5%, transparent 10% 25%),
+    radial-gradient(circle at 15vw 0%, var(--accent) 0% 5%, transparent 10% 25%),
+    radial-gradient(circle at 20vw 0%, var(--accent) 0% 5%, transparent 10% 25%),
+    radial-gradient(circle at 25vw 0%, var(--accent) 0% 5%, transparent 10% 25%);
+  animation: cloudsFloat 6s ease-in-out infinite;
+}
+
+.clouds-right {
+  background-image: radial-gradient(
+      circle at 85vw 0%,
+      var(--accent) 0% 5%,
+      transparent 10% 25%
+    ),
+    radial-gradient(circle at 90vw 5%, var(--accent) 0% 5%, transparent 10% 25%),
+    radial-gradient(circle at 95vw 0%, var(--accent) 0% 5%, transparent 10% 25%),
+    radial-gradient(circle at 85vw 5%, var(--accent) 0% 5%, transparent 10% 25%),
+    radial-gradient(circle at 80vw 0%, var(--accent) 0% 5%, transparent 10% 25%),
+    radial-gradient(circle at 75vw 5%, var(--accent) 0% 5%, transparent 10% 25%),
+    radial-gradient(circle at 70vw 0%, var(--accent) 0% 5%, transparent 10% 25%);
+  animation: cloudsFloat 12s linear infinite;
+}
+
+.clouds-middle {
+  background-image: radial-gradient(
+      circle at 50vw 0%,
+      var(--accent) 0% 5%,
+      transparent 10% 25%
+    ),
+    radial-gradient(circle at 35vw 5%, var(--accent) 0% 5%, transparent 10% 25%),
+    radial-gradient(circle at 40vw 0%, var(--accent) 0% 5%, transparent 10% 25%),
+    radial-gradient(circle at 45vw 5%, var(--accent) 0% 5%, transparent 10% 25%);
+  animation: cloudsFloat 8s linear infinite;
+}
