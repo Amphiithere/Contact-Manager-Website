@@ -5,45 +5,23 @@
 
 	$inData = getRequestInfo();
 
-	//Information to update:
-	$firstName = $inData["firstName"];
-	$lastName = $inData["lastName"];
-	$phoneNumber = $inData["phoneNumber"];
-	$emailAddress = $inData["emailAddress"];
-	$userId = $inData["userId"]
-	$contactId = $inData["contactId"];
-
 	//Connect to the Sql Database
 	//We configured "TheBeast" with admin privileges
-	$conn = new mysqli("localhost",
-		"TheBeast",
-		"WeLoveCOP4331",
-		"COP4331");
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
 	//report connection errors
 	if($conn->connect_error)
 	{
-		returnWithError($conn->connect_errror);
+		returnWithError($conn->connect_error);
 	}
 	//no error found
 	else
 	{
 		//create SQL statement to send to database
-		$stmt = $conn->prepare("UPDATE Contacts Set 
-			FirstName = ?, 
-			LastName = ?,
-			PhoneNumber = ?,
-			Email = ?,
-			WHERE ID = ? AND UserID = ?");
+		$stmt = $conn->prepare("UPDATE Contacts Set FirstName = ?, LastName = ?, Phone = ?, Email = ?	WHERE ID = ? AND UserID = ?");
 
 		//prepare SQL statement by binding arguments
-		$stmt = $conn->bind_param("ssssii"
-			,$firstName
-			,$lastName
-			,$phoneNumber
-			,$emailAddress
-			,$contactId
-			,$userID);
+		$stmt->bind_param("ssssii", $inData["firstName"], $inData["lastName"], $inData["phoneNumber"], $inData["emailAddress"], $inData["contactId"], $inData["userId"]);
 
 		//execute arguments
 		$stmt->execute();
@@ -53,6 +31,10 @@
 		{
 			returnWithError("No contact found or Unauthorized");
 		}
+    else
+    {
+      returnWithInfo("Contact update successful");
+    }
 
 		//close statment and connection
 		$stmt->close();
@@ -79,11 +61,10 @@
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson($retValue);
 	}		
-
-
-
-
-
-
-
+ 
+ function returnWithInfo( $message )
+{
+    $retValue = '{"success":true,"message":"' . $message . '"}';
+    sendResultInfoAsJson( $retValue );
+}
 ?>

@@ -1,4 +1,4 @@
-const urlBase = '/LAMPAPI';
+const urlBase = '/PHP';
 const extension = 'php';
 
 let userId = 0;
@@ -182,39 +182,6 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
-//TODO: Replace color vars with account info
-function addColor()
-{
-	let newColor = document.getElementById("colorText").value;
-	document.getElementById("colorAddResult").innerHTML = "";
-
-	let tmp = {color:newColor,userId,userId};
-	let jsonPayload = JSON.stringify( tmp );
-
-	let url = urlBase + '/AddColor.' + extension;
-
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				document.getElementById("colorAddResult").innerHTML = "Color has been added";
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("colorAddResult").innerHTML = err.message;
-	}
-
-}
-
-//TODO: replace colors with contact info and params
 function searchContacts()
 {
 	let srch = document.getElementById("searchText").value;
@@ -318,10 +285,10 @@ function addContact() {
 }
 
 function saveNewContact() {
-    const firstName = document.getElementById('add-first-name').value;
-    const lastName = document.getElementById('add-last-name').value;
-    const phoneNumber = document.getElementById('add-phone').value;
-    const emailAddress = document.getElementById('add-email').value;
+    let firstName = document.getElementById("add-first-name").value;
+    let lastName = document.getElementById("add-last-name").value;
+    let phoneNumber = document.getElementById("add-phone").value;
+    let emailAddress = document.getElementById("add-email").value;
 
     // Validate inputs
     if (firstName.trim() === '' || lastName.trim() === '' || phoneNumber.trim() === '' || emailAddress.trim() === '') {
@@ -330,7 +297,7 @@ function saveNewContact() {
     }
 
     // Create data object
-    const data = {
+    let data = {
         firstName: firstName,
         lastName: lastName,
         phoneNumber: phoneNumber,
@@ -456,23 +423,21 @@ function closeAddModal() {
 }
 
 function saveContact(id) {
-    const firstName = document.getElementById('edit-first-name').value;
-    const lastName = document.getElementById('edit-last-name').value;
-    const phoneNumber = document.getElementById('edit-phone').value;
-    const emailAddress = document.getElementById('edit-email').value;
+    let firstName = document.getElementById('edit-first-name').value;
+    let lastName = document.getElementById('edit-last-name').value;
+    let phoneNumber = document.getElementById('edit-phone').value;
+    let emailAddress = document.getElementById('edit-email').value;
 
     if (firstName.trim() === '' || lastName.trim() === '' || phoneNumber.trim() === '' || emailAddress.trim() === '') {
         document.getElementById('editResult').innerHTML = "All fields are required";
         return;
     }
 
-    const data = {
+    let data = {
         firstName: firstName,
         lastName: lastName,
         phoneNumber: phoneNumber,
         emailAddress: emailAddress,
-
-        // Unsure about these two but it is in the edit.php
         contactId: id,
         userId: userId
     };
