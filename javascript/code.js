@@ -82,6 +82,29 @@ function doRegister()
 		return;
 	}
 
+    //Enforce minimum character limit. MUST BE TESTED
+    if(firstName.length < 2 || lastName.length < 2 || login.length < 4 || password.length < 8) {
+        if(firstName.length < 2) {
+            document.getElementById("registerResult").innerHTML = "Firstname must consist of at least 2 letters";
+            return;
+        }
+
+        if(lastName.length < 2) {
+            document.getElementById("registerResult").innerHTML = "Lastname must consist of at least 2 letters";
+            return;
+        }
+
+        if(login.length < 4) {
+            document.getElementById("registerResult").innerHTML = "Username must consist of at least 4 characters";
+            return;
+        }
+
+        if(password.length < 8) {
+            document.getElementById("registerResult").innerHTML = "Password must consist of at least 8 characters";
+            return;
+        }
+    }
+
 	// Create the data object to send
 	let tmp = {
 		firstName: firstName,
@@ -333,6 +356,7 @@ function saveNewContact() {
     }
 }
 
+//TODO: refresh search on deletion successful
 function deleteContact(id) {
     if (!confirm("Are you sure you want to delete this contact?")) {
         return;
