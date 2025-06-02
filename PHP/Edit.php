@@ -10,7 +10,7 @@
 	$lastName = $inData["lastName"];
 	$phoneNumber = $inData["phoneNumber"];
 	$emailAddress = $inData["emailAddress"];
-	$userId = $inData["userId"]
+	$userId = $inData["userId"];
 	$contactId = $inData["contactId"];
 
 	//Connect to the Sql Database
@@ -23,7 +23,7 @@
 	//report connection errors
 	if($conn->connect_error)
 	{
-		returnWithError($conn->connect_errror);
+		returnWithError($conn->connect_error);
 	}
 	//no error found
 	else
@@ -32,18 +32,18 @@
 		$stmt = $conn->prepare("UPDATE Contacts Set 
 			FirstName = ?, 
 			LastName = ?,
-			PhoneNumber = ?,
+			Phone = ?,
 			Email = ?,
-			WHERE ID = ? AND UserID = ?");
+			WHERE UserID = ? AND ID = ?");
 
 		//prepare SQL statement by binding arguments
-		$stmt = $conn->bind_param("ssssii"
+		$stmt->bind_param("ssssii"
 			,$firstName
 			,$lastName
 			,$phoneNumber
 			,$emailAddress
-			,$contactId
-			,$userID);
+			,$userId
+			,$contactId);
 
 		//execute arguments
 		$stmt->execute();
@@ -57,6 +57,7 @@
 		//close statment and connection
 		$stmt->close();
 		$conn->close();
+		returnWithError("");
 	}
 
 

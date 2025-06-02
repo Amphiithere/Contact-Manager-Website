@@ -16,7 +16,7 @@
 	else
 	{
 		$stmt = $conn->prepare("INSERT INTO Contacts (FirstName,LastName,Phone,Email,UserID) VALUES(?,?,?,?,?)");	//change color values to contact values
-		$stmt->bind_param("sssss",$firstName,$lastName,$phoneNumber,$emailAddress,$userId);
+		$stmt->bind_param("ssssi",$firstName,$lastName,$phoneNumber,$emailAddress,$userId);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();

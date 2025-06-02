@@ -28,7 +28,7 @@
 		
 		#Binds the following paramters to the unknown placeholders defined above.
 		#bind_param('ii' stands for 'int, int').
-		$stmt->bind_param("ii", $contactID, $userID)
+		$stmt->bind_param("ii", $contactID, $userID);
 		
 		#executes the prepared sql statement created above.
 		$stmt->execute();
@@ -42,6 +42,7 @@
 		#close the connection and close the statement.
 		$stmt->close();
 		$conn->close();
+		returnWithError("");
 	}
 
 
