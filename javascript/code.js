@@ -82,15 +82,15 @@ function doRegister()
 		return;
 	}
 
-    //Enforce minimum character limit. MUST BE TESTED
+    //Enforce minimum character limit.
     if(firstName.length < 2 || lastName.length < 2 || login.length < 4 || password.length < 8) {
         if(firstName.length < 2) {
-            document.getElementById("registerResult").innerHTML = "Firstname must consist of at least 2 letters";
+            document.getElementById("registerResult").innerHTML = "First name must consist of at least 2 letters";
             return;
         }
 
         if(lastName.length < 2) {
-            document.getElementById("registerResult").innerHTML = "Lastname must consist of at least 2 letters";
+            document.getElementById("registerResult").innerHTML = "Last name must consist of at least 2 letters";
             return;
         }
 
