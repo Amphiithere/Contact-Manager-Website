@@ -14,8 +14,8 @@
     <link rel="stylesheet" type="text/css" href="/Styles/background.css" />
 
     <!-- import js files-->
-    <script src="/javascript/app.js"></script>
     <script src="/javascript/code.js"></script>
+    <script src="/javascript/app.js"></script>
     
     <script type="text/javascript">
 	  document.addEventListener('DOMContentLoaded', function() 
@@ -23,6 +23,13 @@
 		  readCookie();
 	  }, false);
 	  </script>
+     
+   <script>
+     window.addEventListener('load', function() {
+         window.searchContacts();
+     }, false);
+     </script>
+    
   </head>
 
   <body class="contacts-body">
@@ -96,13 +103,13 @@
           <div class="add-button">
             <button class="button" onclick="addContact()">Add Contact</button>
           </div>
-          <div id="colorSearchResult"></div>
         </div>
-
         <div class="content-body">
           <table id="contact-list"></table>
         </div>
-        <div id="contact-notification"></div>
+        <div class="contact-notif-box">
+          <div id="contact-notification"></div>
+        </div>
       </div>
     </main>
   </body>

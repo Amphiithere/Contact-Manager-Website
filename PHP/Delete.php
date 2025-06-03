@@ -38,6 +38,9 @@
 		{
 			returnWithError("No contact found or unauthorized");
 		}
+     else {
+     returnWithInfo("User Deleted Successfully");
+     }
 
 		#close the connection and close the statement.
 		$stmt->close();
